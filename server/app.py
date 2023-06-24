@@ -44,12 +44,20 @@ def games():
 def game_by_id(id):
     game = Game.query.filter_by(id=id).first()
 
+
+    # if game is None:
+    #     response_body = {'error': 'Game not found'}
+    #     response = make_response(jsonify(response_body), 404)
+    #     response.headers["Content-Type"] = "application/json"
+    #     return response
+    # --------------------No need of this commented section---------------
     # game_dict = {
     #     "title": game.title,
     #     "genre": game.genre,
     #     "platform": game.platform,
     #     "price": game.price,
     # }
+    
     game_dict = game.to_dict()
 
     response = make_response(
